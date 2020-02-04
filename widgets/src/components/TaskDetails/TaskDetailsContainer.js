@@ -6,7 +6,7 @@ import Container from '@material-ui/core/Container';
 
 import { getTask } from 'api/pda/tasks';
 import { getPageWidget } from 'api/app-builder/pages';
-import theme from 'theme';
+import theme from '@entando/ui';
 import CustomEventContext from 'components/TaskDetails/CustomEventContext';
 import WidgetBox from 'components/common/WidgetBox';
 import Overview from 'components/TaskDetails/Overview';

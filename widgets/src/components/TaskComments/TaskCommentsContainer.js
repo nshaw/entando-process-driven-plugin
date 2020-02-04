@@ -9,7 +9,7 @@ import Typography from '@material-ui/core/Typography';
 
 import { getTaskComments, postTaskComment, deleteTaskComment } from 'api/pda/comments';
 import { getPageWidget } from 'api/app-builder/pages';
-import theme from 'theme';
+import theme from '@entando/ui';
 import ErrorNotification from 'components/common/ErrorNotification';
 import WidgetBox from 'components/common/WidgetBox';
 import Comment from 'components/TaskComments/Comment';

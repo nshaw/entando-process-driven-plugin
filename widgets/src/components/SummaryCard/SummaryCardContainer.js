@@ -9,7 +9,7 @@ import Select from '@material-ui/core/Select';
 import MenuItem from '@material-ui/core/MenuItem';
 import withStyles from '@material-ui/core/styles/withStyles';
 import { DOMAINS, LOCAL } from 'api/constants';
-import theme from 'theme';
+import theme from '@entando/ui';
 import { getPageWidget } from 'api/app-builder/pages';
 import { getSummary } from 'api/pda/summary';
 import CustomEventContext from 'components/SummaryCard/CustomEventContext';

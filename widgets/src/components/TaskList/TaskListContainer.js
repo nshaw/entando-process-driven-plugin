@@ -17,7 +17,7 @@ import ErrorNotification from 'components/common/ErrorNotification';
 import ErrorComponent from 'components/common/ErrorComponent';
 import Table from 'components/common/Table/Table';
 import SimpleDialog from 'components/common/SimpleDialog';
-import theme from 'theme';
+import theme from '@entando/ui';
 
 const styles = {
   paper: {
