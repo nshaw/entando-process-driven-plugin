@@ -20,17 +20,23 @@ const StyledTableRowHover = withStyles(
   { name: 'StyledTableRowHover' }
 )(TableRow);
 
-const InternalTableBody = ({ columns, rows, emptyRows, rowHeight }) => {
+const InternalTableBody = ({ classes, columns, rows, emptyRows, rowHeight, showColumnLabel }) => {
   return (
     <TableBody>
       {rows.map(row => (
         <StyledTableRowHover
+          className={classes.row}
           key={JSON.stringify(row)}
           style={{ height: rowHeight, cursor: row.onClick ? 'pointer' : 'initial' }}
           hover
         >
           {columns.map(column => (
-            <InternalTableCell key={JSON.stringify(column)} column={column} row={row} />
+            <InternalTableCell
+              key={JSON.stringify(column)}
+              column={column}
+              row={row}
+              showColumnLabel={showColumnLabel}
+            />
           ))}
         </StyledTableRowHover>
       ))}
@@ -44,17 +50,25 @@ const InternalTableBody = ({ columns, rows, emptyRows, rowHeight }) => {
 };
 
 InternalTableBody.propTypes = {
+  classes: PropTypes.shape({
+    row: PropTypes.string,
+  }),
   columns: PropTypes.arrayOf(columnType),
   rows: PropTypes.arrayOf(PropTypes.shape({})),
   emptyRows: PropTypes.number,
   rowHeight: PropTypes.number,
+  showColumnLabel: PropTypes.bool,
 };
 
 InternalTableBody.defaultProps = {
+  classes: {
+    row: '',
+  },
   columns: [],
   rows: [],
   emptyRows: 0,
   rowHeight: 55,
+  showColumnLabel: false,
 };
 
 export default InternalTableBody;

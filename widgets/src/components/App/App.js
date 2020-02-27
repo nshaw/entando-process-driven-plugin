@@ -42,6 +42,10 @@ import TaskCommentsConfig from 'components/TaskComments/TaskCommentsConfig';
 import ProcessFormContainer from 'components/ProcessForm/ProcessFormContainer';
 import ProcessFormConfig from 'components/ProcessForm/ProcessFormConfig';
 
+import CompanyRegisterFormContainer from 'components/CompanyRegisterForm/CompanyRegisterFormContainer';
+
+import CompanyListContainer from 'components/CompanyList/CompanyListContainer';
+
 const useStyles = makeStyles(theme => ({
   appBar: {
     flexGrow: 1,
@@ -214,6 +218,26 @@ function App() {
             )}
           />
           <Route path="/OvertimeGraphConfig" render={() => <OvertimeGraphConfig config={{}} />} />
+          <Route
+            path="/CompanyRegisterForm"
+            render={() => (
+              <CompanyRegisterFormContainer
+                pageCode={WIDGETS_CONFIG.PROCESS_FORM.pageCode}
+                frameId={WIDGETS_CONFIG.PROCESS_FORM.frameId}
+                widgetCode={WIDGETS_CONFIG.PROCESS_FORM.widgetCode}
+              />
+            )}
+          />
+          <Route
+            path="/CompanyList"
+            render={() => (
+              <CompanyListContainer
+                pageCode={WIDGETS_CONFIG.PROCESS_FORM.pageCode}
+                frameId={WIDGETS_CONFIG.PROCESS_FORM.frameId}
+                widgetCode={WIDGETS_CONFIG.PROCESS_FORM.widgetCode}
+              />
+            )}
+          />
         </Container>
       </Router>
     </div>

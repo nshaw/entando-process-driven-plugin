@@ -1,0 +1,63 @@
+{
+  "payload": [
+    {
+      "id": "123@companyList_1.0.0",
+      "businessName": "Assicurazioni Generali",
+      "vatNumber": "0764352056C",
+      "fiscalCode": "BCHMTP84R58Z127D",
+      "sapCode": "30431294",
+      "username": "Mario Rossi",
+      "status": "approved",
+      "activatedAt": "2020-01-07T04:17:51Z"
+    },
+    {
+      "id": "112@companyList_1.0.0",
+      "businessName": "Artemide",
+      "vatNumber": "0252349122C",
+      "fiscalCode": "BRTVOW12E52P630E",
+      "sapCode": "54322091",
+      "username": "Marty Rimselis",
+      "status": "waiting",
+      "activatedAt": "2019-11-14T09:26:30Z"
+    },
+    {
+      "id": "678@companyList_1.0.0",
+      "businessName": "Giuseppe",
+      "vatNumber": "0543451892C",
+      "fiscalCode": "TRYJ6W64T43B279F",
+      "sapCode": "44695264",
+      "username": "Giu DeSantis",
+      "status": "approved",
+      "activatedAt": "2019-11-13T02:52:06Z"
+    },
+    {
+      "id": "564@companyList_1.0.0",
+      "businessName": "Wucci",
+      "vatNumber": "9428630135C",
+      "fiscalCode": "RICP3T01S15P295K",
+      "sapCode": "95351049",
+      "username": "Jeff Go",
+      "status": "declined",
+      "activatedAt": "2019-08-28T03:01:56Z"
+    },
+    {
+      "id": "817@companyList_1.0.0",
+      "businessName": "Illy",
+      "vatNumber": "3194819574C",
+      "fiscalCode": "IUJS4V43Q78V281B",
+      "sapCode": "96824010",
+      "username": "Pas Camastra",
+      "status": "waiting",
+      "activatedAt": "2019-07-21T04:31:48Z"
+    }
+  ],
+  "errors": [],
+  "metadata": {
+    "page": 1,
+    "pageSize": 100,
+    "lastPage": 1,
+    "totalItems": -1,
+    "filters": [],
+    "additionalParams": {}
+  }
+}

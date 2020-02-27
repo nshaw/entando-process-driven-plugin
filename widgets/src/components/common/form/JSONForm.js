@@ -26,7 +26,16 @@ const styles = {
   },
 };
 
-const CompletionForm = ({ classes, loading, submitting, formSchema, formData, uiSchema }) => {
+const CompletionForm = ({
+  classes,
+  loading,
+  submitting,
+  formSchema,
+  formData,
+  uiSchema,
+  noTitle,
+  children,
+}) => {
   if (loading) {
     return <JSONFormSkeleton />;
   }
@@ -38,8 +47,7 @@ const CompletionForm = ({ classes, loading, submitting, formSchema, formData, ui
   const ThemedForm = withTheme(MuiRJSForm);
 
   const fields = {
-    // eslint-disable-next-line react/jsx-props-no-spreading
-    TitleField: props => <JSONFormTitle {...props} />,
+    TitleField: !noTitle ? props => <JSONFormTitle {...props} /> : () => <div />,
   };
 
   return (
@@ -56,11 +64,15 @@ const CompletionForm = ({ classes, loading, submitting, formSchema, formData, ui
               className={classes.themedForm}
               onSubmit={e => onSubmitForm(e)}
             >
-              <div className={classes.actionButtons}>
-                <Button type="submit" variant="contained" color="primary" disabled={submitting}>
-                  {i18next.t(submitting ? 'messages.notify.submitting' : 'common.submit')}
-                </Button>
-              </div>
+              {!children ? (
+                <div className={classes.actionButtons}>
+                  <Button type="submit" variant="contained" color="primary" disabled={submitting}>
+                    {i18next.t(submitting ? 'messages.notify.submitting' : 'common.submit')}
+                  </Button>
+                </div>
+              ) : (
+                children
+              )}
             </ThemedForm>
           )}
         </div>
@@ -75,11 +87,13 @@ CompletionForm.propTypes = {
     divider: PropTypes.string,
     themedForm: PropTypes.string,
   }).isRequired,
+  children: PropTypes.oneOfType([PropTypes.arrayOf(PropTypes.node), PropTypes.node]),
   loading: PropTypes.bool,
   submitting: PropTypes.bool,
   formSchema: PropTypes.shape({}),
   formData: PropTypes.shape({}),
   uiSchema: PropTypes.shape({}),
+  noTitle: PropTypes.bool,
 };
 
 CompletionForm.defaultProps = {
@@ -88,6 +102,8 @@ CompletionForm.defaultProps = {
   formSchema: null,
   formData: {},
   uiSchema: {},
+  noTitle: false,
+  children: null,
 };
 
 export default withStyles(styles)(CompletionForm);

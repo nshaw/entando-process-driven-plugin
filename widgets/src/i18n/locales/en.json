@@ -45,6 +45,23 @@
     },
     "emptyList": "You don't have any active, assigned or complete tasks"
   },
+  "poste": {
+    "companyList": {
+      "columns": {
+        "id": "ID",
+        "businessName": "Business Name",
+        "vatNumber": "VAT Number",
+        "fiscalCode": "Fiscal Code",
+        "sapCode": "SAP Code",
+        "username": "Contact Name"
+      },
+      "statuses": {
+        "approved": "Approved",
+        "waiting": "Waiting",
+        "declined": "Declined"
+      }
+    }
+  },
   "table": {
     "title": "Task List",
     "subtitle": "List of tasks",

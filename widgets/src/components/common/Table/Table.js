@@ -44,6 +44,7 @@ const styles = {
   hideShadows: {
     boxShadow: 'none',
   },
+  row: {},
   tableWrapper: {
     overflow: 'auto',
     position: 'relative',
@@ -144,10 +145,12 @@ class Table extends React.Component {
       rowsPerPageOptions,
       title,
       subtitle,
+      hideColumnHead,
       hidePagination,
       classes,
       lazyLoadingProps,
       loading,
+      separateRows,
     } = this.props;
     const { rowsPerPage, page, sortedColumn, sortOrder, sortFunction, filter } = this.state;
 
@@ -190,6 +193,17 @@ class Table extends React.Component {
       displayRows = hidePagination ? displayRows : displayRows.slice(firstRow, lastRow);
     }
 
+    const tableProps = {
+      className: classNames(!hasHeader && hidePagination && classes.hideShadows),
+    };
+
+    if (separateRows) {
+      tableProps.style = {
+        borderCollapse: 'separate',
+        borderSpacing: '0 10px',
+      };
+    }
+
     return loading ? (
       <TaskListSkeleton rows={rowsPerPage} />
     ) : (
@@ -206,17 +220,23 @@ class Table extends React.Component {
           </Toolbar>
         )}
         <div className={classes.tableWrapper}>
-          <MuiTable className={classNames(!hasHeader && hidePagination && classes.hideShadows)}>
-            <InternalTableHead
-              columns={columns}
-              createSortHandler={this.createSortHandler}
-              sortedColumn={sortedColumn}
-              sortOrder={sortOrder}
-            />
+          <MuiTable {...tableProps}>
+            {!hideColumnHead && (
+              <InternalTableHead
+                columns={columns}
+                createSortHandler={this.createSortHandler}
+                sortedColumn={sortedColumn}
+                sortOrder={sortOrder}
+              />
+            )}
             {displayRows.length ? (
               <InternalTableBody
                 columns={columns}
                 rows={displayRows}
+                classes={{
+                  row: classes.row,
+                }}
+                showColumnLabel={hideColumnHead}
                 emptyRows={rowsPerPage - displayRows.length}
               />
             ) : (
@@ -265,6 +285,7 @@ Table.propTypes = {
     toolbar: PropTypes.string,
     noSubtitleToolbar: PropTypes.string,
     title: PropTypes.string,
+    row: PropTypes.string,
     hideShadows: PropTypes.string,
     tableWrapper: PropTypes.string,
   }),
@@ -275,6 +296,7 @@ Table.propTypes = {
   }),
   loading: PropTypes.bool,
   columns: PropTypes.arrayOf(columnType),
+  hideColumnHead: PropTypes.bool,
   hidePagination: PropTypes.bool,
   /** Prop value is required for sortable tables. */
   initialSortedColumn: PropTypes.string,
@@ -283,6 +305,7 @@ Table.propTypes = {
   rowsPerPageOptions: PropTypes.arrayOf(PropTypes.number),
   title: PropTypes.string,
   subtitle: PropTypes.string,
+  separateRows: PropTypes.bool,
 };
 
 Table.defaultProps = {
@@ -292,11 +315,13 @@ Table.defaultProps = {
   rowsPerPageOptions: [5, 10, 15],
   title: '',
   subtitle: '',
+  hideColumnHead: false,
   hidePagination: false,
   initialSortedColumn: '',
   initialSortOrder: 'asc',
   rows: [],
   columns: [],
+  separateRows: false,
 };
 
 export default withStyles(styles)(Table);

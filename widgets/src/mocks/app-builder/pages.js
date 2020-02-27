@@ -85,6 +85,21 @@ const processFormConfigs = {
   errors: [],
 };
 
+const userFormConfigs = {
+  payload: {
+    code: 'phase_1_widgets',
+    config: {
+      containerId: 'evaluation_1.0.0-SNAPSHOT',
+      knowledgeSource: 'kieStaging',
+      process: 'evaluation@evaluation_1.0.0-SNAPSHOT',
+      settings:
+        '{"uiSchema":"{\\n  \\"companyInformation\\": {\\n    \\"businessName\\": {\\n      \\"ui:autofocus\\": true\\n    },\\n    \\"legalStructure\\": {\\n      \\"ui:widget\\": \\"select\\"\\n    },\\n    \\"province\\": {\\n      \\"ui:widget\\": \\"select\\"\\n    },\\n    \\"country\\": {\\n      \\"ui:widget\\": \\"select\\"\\n    }\\n  }\\n}"}',
+    },
+  },
+  metaData: { status: 'draft' },
+  errors: [],
+};
+
 const overtimeGraphConfigs = {
   payload: {
     code: 'phase_1_mgt_dashboard',
@@ -100,6 +115,19 @@ const overtimeGraphConfigs = {
   errors: [],
 };
 
+const companyListConfigs = {
+  payload: {
+    code: 'phase_1_widgets',
+    config: {
+      columns:
+        '[{"name":"businessName","position":0,"isVisible":true},{"name":"vatNumber","position":1,"isVisible":true},{"name":"fiscalCode","position":2,"isVisible":true},{"name":"sapCode","position":3,"isVisible":true},{"name":"username","position":4,"isVisible":true}]',
+      knowledgeSource: 'kieStaging',
+      process: 'Mortgage_Process.MortgageApprovalProcess@mortgage-process_1.0.1-SNAPSHOT',
+    },
+  },
+  errors: {},
+};
+
 export default {
   TASK_LIST: taskListConfigs,
   TASK_DETAILS: taskDetailsConfigs,
@@ -108,4 +136,6 @@ export default {
   SUMMARY_CARD: summaryCardConfigs,
   PROCESS_FORM: processFormConfigs,
   OVERTIME_GRAPH: overtimeGraphConfigs,
+  USER_REGISTER_FORM: userFormConfigs,
+  COMPANY_LIST: companyListConfigs,
 };

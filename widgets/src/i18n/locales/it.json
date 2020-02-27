@@ -45,6 +45,23 @@
     },
     "emptyList": "Non hai attività attive, assegnate o complete"
   },
+  "poste": {
+    "companyList": {
+      "columns": {
+        "id": "ID",
+        "businessName": "Ragione Sociale",
+        "vatNumber": "P.IVA",
+        "fiscalCode": "Codice Fiscale",
+        "sapCode": "Codice SAP",
+        "username": "Nome Utente"
+      },
+      "statuses": {
+        "approved": "Approvato",
+        "waiting": "In Attesa",
+        "declined": "Rifiutato"
+      }
+    }
+  },
   "table": {
     "title": "Elenco attività",
     "subtitle": "Elenco delle attività",
