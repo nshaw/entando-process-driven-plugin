@@ -27,6 +27,7 @@ class CompanyRegisterFormElement extends HTMLElement {
     const pageCode = this.getAttribute('page-code');
     const frameId = this.getAttribute('frame-id');
     const serviceUrl = this.getAttribute('service-url');
+    const actionUrl = this.getAttribute('action-url');
 
     const reactRoot = React.createElement(
       CompanyRegisterForm,
@@ -36,6 +37,7 @@ class CompanyRegisterFormElement extends HTMLElement {
         pageCode,
         frameId,
         serviceUrl,
+        actionUrl,
       },
       null
     );

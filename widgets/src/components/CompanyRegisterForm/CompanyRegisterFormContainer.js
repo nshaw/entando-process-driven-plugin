@@ -192,6 +192,8 @@ class CompanyRegisterFormContainer extends React.Component {
       try {
         const response = await postUserForm(form.formData);
         onSubmitForm({ ...form, response });
+        const { actionUrl } = this.props;
+        window.location.href = actionUrl;
       } catch (error) {
         this.handleError(error.message);
       } finally {
@@ -333,7 +335,7 @@ class CompanyRegisterFormContainer extends React.Component {
     return (
       <CustomEventContext.Provider
         value={{
-          onSubmitForm: this.submitProcessForm,
+          onSubmitForm: this.submitRegisterForm,
           onError,
         }}
       >
@@ -360,6 +362,7 @@ CompanyRegisterFormContainer.propTypes = {
   onSubmitForm: PropTypes.func,
   pageCode: PropTypes.string,
   frameId: PropTypes.string,
+  actionUrl: PropTypes.string,
 };
 
 CompanyRegisterFormContainer.defaultProps = {
@@ -367,6 +370,7 @@ CompanyRegisterFormContainer.defaultProps = {
   onSubmitForm: () => {},
   pageCode: '',
   frameId: '',
+  actionUrl: '/',
 };
 
 export default withStyles(styles)(CompanyRegisterFormContainer);
