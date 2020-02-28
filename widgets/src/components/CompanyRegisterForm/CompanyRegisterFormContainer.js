@@ -12,9 +12,12 @@ import Typography from '@material-ui/core/Typography';
 import ErrorNotification from 'components/common/ErrorNotification';
 import { getUserForm, postUserForm } from 'api/poste/company';
 import { getPageWidget } from 'api/app-builder/pages';
+import PDFIcon from '@material-ui/icons/PictureAsPdfRounded';
 
 const styles = {
   root: {
+    fontFamily: '-apple-system, BlinkMacSystemFont, \'Segoe UI\', \'Roboto\', \'Oxygen\', \'Ubuntu\', \'Cantarell\', \'Fira Sans\', \'Droid Sans\', \'Helvetica Neue\', sans-serif',
+    lineHeight: '1.5em',
     '& a': {
       color: '#003dc6',
     },
@@ -22,6 +25,12 @@ const styles = {
       marginBottom: 24,
       color: '#003dc6',
     },
+  },
+  blue: {
+    fontSize: 16,
+    color: '#003dc6',
+    fontWeight: 'bold',
+    marginBottom: 30,
   },
   box: {
     padding: 60,
@@ -42,8 +51,22 @@ const styles = {
     '& h4:not(:first-of-type)': {
       margin: '32px 0 24px',
     },
+    '& ul': {
+      listStyle: 'none',
+      padding: 0,
+    },
     '& ul > li': {
       marginBottom: 24,
+    },
+    '& ul > li:before': {
+      content: '"\\25ba"',
+      color: '#003dc6',
+      fontSize: 11,
+      display: 'inline-block',
+      verticalAlign: 'middle',
+      width: '1em',
+      marginLeft: '-2em',
+      marginRight: '1em',
     },
     '& > button': {
       display: 'block',
@@ -74,6 +97,20 @@ const CustomedButton = withStyles(
   },
   { name: 'CustomedButton' }
 )(Button);
+
+const PDFButton = withStyles({
+  root: {
+    borderRadius: 5,
+    width: 396,
+    height: 56,
+    fontSize: 16,
+    fontWeight: 'bold',
+  },
+  outlined: {
+    border: '1px solid rgba(155, 155, 155, 0.25)',
+    color: '#000',
+  },
+})(Button);
 
 class CompanyRegisterFormContainer extends React.Component {
   constructor(props) {
@@ -258,6 +295,15 @@ class CompanyRegisterFormContainer extends React.Component {
             Si rende noto che l'Abilitazione al portale e il servizio di supporto sono completamente
             gratuiti.
           </p>
+          <Typography variant="h6" className={classes.blue} gutterBottom>
+            PRENDI VISIONE E SCARICA IL CONTRATTO
+          </Typography>
+          <PDFButton
+            variant="outlined"
+            startIcon={<PDFIcon />}
+          >
+            {"Contratto di registrazione al portale.pdf"}
+          </PDFButton>
           <CustomedButton onClick={() => this.setPage(1)} variant="contained">
             Compila il Modulo di registrazione
           </CustomedButton>
@@ -307,6 +353,7 @@ CompanyRegisterFormContainer.propTypes = {
   classes: PropTypes.shape({
     root: PropTypes.string.isRequired,
     box: PropTypes.string.isRequired,
+    blue: PropTypes.string.isRequired,
     sidebar: PropTypes.string.isRequired,
   }).isRequired,
   onError: PropTypes.func,

@@ -3,6 +3,9 @@ import React from 'react';
 import i18next from 'i18next';
 import PropTypes from 'prop-types';
 import withStyles from '@material-ui/core/styles/withStyles';
+import Typography from '@material-ui/core/Typography';
+import Button from '@material-ui/core/Button';
+import FilterListIcon from '@material-ui/icons/FilterList';
 
 import { DOMAINS, LOCAL } from 'api/constants';
 import { getCompanies } from 'api/poste/company';
@@ -16,9 +19,30 @@ import Table from 'components/common/Table/Table';
 import theme from 'theme';
 
 const styles = {
-  paper: {
+  root: {
     minHeight: 459,
     position: 'relative',
+  },
+  headarea: {
+    display: 'flex',
+    alignItems: 'center',
+    marginBottom: 24,
+    '& h1': {
+      color: '#003dc6',
+      fontSize: 46,
+      flex: 1,
+    },
+    '& h6': {
+      marginRight: 48,
+      textTransform: 'uppercase',
+      color: '#9b9b9b',
+      fontSize: 16,
+      '& em': {
+        color: '#003dc6',
+        fontStyle: 'normal',
+        fontWeight: 'bold',
+      },
+    },
   },
 };
 
@@ -48,6 +72,23 @@ const CustomedTable = withStyles(
   },
   { name: 'CustomedTable' }
 )(Table);
+
+const FilterButton = withStyles(
+  {
+    root: {
+      borderRadius: 28,
+      textTransform: 'uppercase',
+      color: '#fff',
+      padding: '10px 36px',
+      height: 'auto',
+      fontSize: 16,
+    },
+    contained: {
+      backgroundColor: '#003dc6',
+    },
+  },
+  { name: 'FilterButton' }
+)(Button);
 
 class CompanyList extends React.Component {
   state = {
@@ -180,7 +221,21 @@ class CompanyList extends React.Component {
 
     return (
       <ThemeProvider theme={theme}>
-        <div className={classes.paper}>
+        <div className={classes.root}>
+          <section className={classes.headarea}>
+            <Typography variant="h4" component="h1">
+              Dashboard
+            </Typography>
+            <Typography variant="h6">
+              <em>2.345</em> record visualizzati
+            </Typography>
+            <FilterButton
+              variant="contained"
+              endIcon={<FilterListIcon />}
+            >
+              Filtra / Ordina
+            </FilterButton>
+          </section>
           {blocker ? (
             <ErrorComponent message={blocker} />
           ) : (
