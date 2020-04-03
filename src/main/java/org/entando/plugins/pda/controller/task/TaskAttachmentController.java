@@ -2,7 +2,6 @@ package org.entando.plugins.pda.controller.task;
 
 import static org.entando.plugins.pda.controller.AuthPermissions.TASK_ATTACHMENTS_CREATE;
 import static org.entando.plugins.pda.controller.AuthPermissions.TASK_ATTACHMENTS_DELETE;
-import static org.entando.plugins.pda.controller.AuthPermissions.TASK_ATTACHMENTS_DOWNLOAD;
 import static org.entando.plugins.pda.controller.AuthPermissions.TASK_ATTACHMENTS_GET;
 import static org.entando.plugins.pda.controller.AuthPermissions.TASK_ATTACHMENTS_LIST;
 import static org.springframework.http.MediaType.APPLICATION_JSON_VALUE;
